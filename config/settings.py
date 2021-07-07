@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 추가한 앱
-    # 'post.apps.PostConfig',
+    'photo.apps.PhotoConfig',
 ]
 
 MIDDLEWARE = [
