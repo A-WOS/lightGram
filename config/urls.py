@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+import photo
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('photo/', include(photo.))
+    path('photo/', include(photo.urls)),
 
 ]
