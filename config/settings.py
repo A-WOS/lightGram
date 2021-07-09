@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 추가한 앱
     'photo.apps.PhotoConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
