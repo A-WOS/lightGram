@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 추가한 앱
     'photo.apps.PhotoConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,7 @@ STATIC_URL = '/static/'
 # 사진 파일 저장 위치
 MEDIA_URL = '/res/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# 로그인 성공했을 시 접속할 링크
+LOGIN_REDIRECT_URL = '/'
