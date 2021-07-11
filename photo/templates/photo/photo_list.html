@@ -21,8 +21,10 @@
             </ul>
             <div class="card-body">
                 <a href="{% url 'photo:detail' object.id %}" class="card-link">댓글달기</a>
+                {% if user == object.author %}
                 <a href="{% url 'photo:update' object.id %}" class="card-link">수정하기</a>
                 <a href="{% url 'photo:delete' object.id %}" class="card-link">삭제하기</a>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
