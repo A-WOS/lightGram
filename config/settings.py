@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # 추가한 앱
     'photo.apps.PhotoConfig',
     'accounts.apps.AccountsConfig',
+    'disqus',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 로그인 성공했을 시 접속할 링크
 LOGIN_REDIRECT_URL = '/'
+
+# 댓글 구현하기(소셜 로그인으로 구현하기)
+DISQUS_WEBSITE_SHORTNAME = 'lightgram'
