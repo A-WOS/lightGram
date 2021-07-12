@@ -1,6 +1,9 @@
+from urllib.parse import urlparse
+
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import redirect
+from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from photo.models import Photo
 
@@ -30,6 +33,7 @@ class PhotoUpdate(UpdateView):
     model = Photo
     fields = ['text', 'image']
     template_name_suffix = '_update'
+
     # success_url = '/'
 
     def dispatch(self, request, *args, **kwargs):
@@ -44,6 +48,7 @@ class PhotoUpdate(UpdateView):
 class PhotoDelete(DeleteView):
     model = Photo
     template_name_suffix = '_delete'
+
     # success_url = '/'
 
     def dispatch(self, request, *args, **kwargs):
@@ -59,3 +64,45 @@ class PhotoDetail(DetailView):
     model = Photo
     template_name_suffix = '_detail'
 
+
+class PhotoLike(View):
+    def get(self, request, *args, **kwargs):
+        # 로그인 확인
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        else:
+            if 'photo_id' in kwargs:
+                photo_id = kwargs['photo_id']
+                photo = Photo.objects.get(pk=photo_id)
+                user = request.user
+
+                # user가 이미 좋아요 한 사람 중에 있으면 클릭했을 때 지워지도록 하고
+                if user in photo.like.all():
+                    photo.like.remove(user)
+                # 그렇지 않으면 더하게 함.
+                else:
+                    photo.like.add(user)
+
+            # referer_url을 통해서 url을 parse하여
+            # 만약에 메인페이지에서 좋아요를 누르면 그 메인페이지에 있도록 하고
+            # 상세페이지에서 좋아요를 누르면 그 상세페이지로 redirect하게 함.
+            referer_url = request.META.get('HTTP_REFERER')
+            path = urlparse(referer_url).path
+            return HttpResponseRedirect(path)
+
+
+class PhotoFavorite(View):
+    def get(self, request, *args, **kwargs):
+        # 로그인 확인
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        else:
+            if 'photo_id' in kwargs:
+                photo_id = kwargs['photo_id']
+                photo = Photo.objects.get(pk=photo_id)
+                user = request.user
+                if user in photo.favorite.all():
+                    photo.favorite.remove(user)
+                else:
+                    photo.favorite.add(user)
+            return HttpResponseRedirect('/')
