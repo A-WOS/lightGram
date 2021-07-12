@@ -137,3 +137,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # 댓글 구현하기(소셜 로그인으로 구현하기)
 DISQUS_WEBSITE_SHORTNAME = 'lightgram'
+"""
+SITE_ID : 현재 제작하고 있는 사이트 
+"""
+SITE_ID = 1
