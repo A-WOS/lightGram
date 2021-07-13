@@ -5,12 +5,14 @@
 {% block content %}
     <div class="container">
         <div class="row">
+{#            <div class="row-1"></div>#}
             <div class="col"></div>
             <div class="col-5">
                 {% for object in object_list %}
                     <div class="card-header">
                         {{ object.author }}
                     </div>
+{#                    <img src=" {{ object.image.url }} " class="card-img-top" style="height: auto; width: 100%; border:1px solid black;" alt="...">#}
                     <img src=" {{ object.image.url }} " class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">{{ object.text }}</p>
@@ -24,7 +26,8 @@
                                     {{ object.like.all.count }}
                                 </span>
                             {% endif %}
-                            <a href="{% url 'photo:favorite' object.id %}" class="float-right btn-favorite {% if user in object.favorite.all %} active {% endif %}">저장하기!</a>
+                            <a href="{% url 'photo:favorite' object.id %}"
+                               class="float-right btn-favorite {% if user in object.favorite.all %} active {% endif %}">저장하기!</a>
                         </li>
                         <li class="list-group-item">생성일 : {{ object.created }}</li>
                         <li class="list-group-item">수정일 : {{ object.updated }}</li>
