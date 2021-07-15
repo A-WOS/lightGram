@@ -54,9 +54,21 @@
         overflow: hidden;
         border: none;
     }
+
     {# float-left는 먹히는데 rigth가 안먹혀서 재정의 느낌으로 정의함 #}
     .float-right {
-        float:right;
+        float: right;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
 </style>
 {% include 'navbar.html' %}
