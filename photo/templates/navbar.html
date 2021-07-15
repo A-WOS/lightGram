@@ -15,6 +15,12 @@
                         <a class="nav-link" href="{% url 'photo:create' %}">사진 올리기<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'photo:like_list' %}">좋아요한 글보기<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'photo:favorite_list' %}">저장한 글보기<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃<span
                                 class="sr-only">(current)</span></a>
                     </li>

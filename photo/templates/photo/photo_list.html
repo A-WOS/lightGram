@@ -19,19 +19,24 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
+                            {% if user.is_authenticated %}
                             <a href="{% url 'photo:like' object.id %}"
                                class="float-left btn-like {% if user in object.like.all %} active {% endif %}">좋아요!</a>
+                            {% endif %}
                             {% if object.like.all.count %}
                                 <span class="float-left">
                                     {{ object.like.all.count }}
                                 </span>
                             {% endif %}
+                        {% if user.is_authenticated %}
                             <a href="{% url 'photo:favorite' object.id %}"
                                class="float-right btn-favorite {% if user in object.favorite.all %} active {% endif %}">저장하기!</a>
                         </li>
+                        {% endif %}
                         <li class="list-group-item">생성일 : {{ object.created }}</li>
                         <li class="list-group-item">수정일 : {{ object.updated }}</li>
                     </ul>
+                    {% if user.is_authenticated %}
                     <div class="card-body">
                         <a href="{% url 'photo:detail' object.id %}" class="card-link">댓글달기</a>
                         {% if user == object.author %}
@@ -39,6 +44,7 @@
                             <a href="{% url 'photo:delete' object.id %}" class="card-link">삭제하기</a>
                         {% endif %}
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
 
