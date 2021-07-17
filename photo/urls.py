@@ -4,7 +4,7 @@ from django.urls import path
 
 import photo
 from photo.views import PhotoCreate, PhotoDelete, PhotoUpdate, PhotoDetail, PhotoList, PhotoLike, PhotoFavorite, \
-    PhotoLikeList, PhotoFavoriteList
+    PhotoLikeList, PhotoFavoriteList, PhotoMyList
 
 app_name = 'photo'
 
@@ -18,6 +18,7 @@ urlpatterns = [
     path('favorite/<int:photo_id>/', PhotoFavorite.as_view(), name='favorite'),
     path('like/', PhotoLikeList.as_view(), name='like_list'),
     path('favorite/', PhotoFavoriteList.as_view(), name='favorite_list'),
+    path('mylist/', PhotoMyList.as_view(), name='mylist'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

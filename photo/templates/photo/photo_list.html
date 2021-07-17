@@ -48,7 +48,17 @@
                 {% endfor %}
             </div>
 
-            <div class="col"></div>
+            <div class="col">
+                {% load static %}
+                <div class="card" style="">
+                    <img src="{% static 'images/awos.JPG' %}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">admin</h5>
+                        <p class="card-text">회원님의 스토리를 확인해보세요!</p>
+                        <a href="{% url 'photo:mylist' %}" class="btn btn-primary">회원님의 스토리 이동</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
