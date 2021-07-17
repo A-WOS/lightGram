@@ -1,0 +1,6 @@
+# 사용자별, 시스템별로 달라지는 파일이므로 깃으로 관리하면 안됨
+# gitignore 작성
+.idea
+db.sqlite3
+*.pyc
+__pycache__
