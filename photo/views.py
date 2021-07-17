@@ -48,8 +48,7 @@ class PhotoUpdate(UpdateView):
 class PhotoDelete(DeleteView):
     model = Photo
     template_name_suffix = '_delete'
-
-    # success_url = '/'
+    success_url = '/'
 
     def dispatch(self, request, *args, **kwargs):
         object = self.get_object()
