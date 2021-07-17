@@ -49,6 +49,7 @@
             </div>
 
             <div class="col">
+            {% if user.is_authenticated %}
                 {% load static %}
                 <div class="card" style="">
                     <img src="{% static 'images/awos.JPG' %}" class="card-img-top">
@@ -64,6 +65,7 @@
                         <a href="{% url 'photo:mylist' %}" class="btn btn-primary">회원님의 스토리 이동</a>
                     </div>
                 </div>
+            {% endif %}
             </div>
         </div>
     </div>
