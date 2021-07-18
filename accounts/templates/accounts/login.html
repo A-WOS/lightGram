@@ -12,8 +12,12 @@
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="login" class="btn btn-outline-primary">
+                <input type="submit" value="로그인" class="float-left btn btn-outline-primary">
+                <a href="{% url 'accounts:signup' %}" class="float-right btn btn-outline-primary">또는 계정 생성</a>
             </form>
+
+
+
     </div>
     <div class="col"></div>
 </div>
