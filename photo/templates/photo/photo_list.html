@@ -34,7 +34,7 @@
                                 </li>
                             {% endif %}
                         <li class="list-group-item">생성일 : {{ object.created }}</li>
-                        <li class="list-group-item">수정일 : {{ object.updated }}</li>
+{#                        <li class="list-group-item">수정일 : {{ object.updated }}</li>#}
                     </ul>
                     {% if user.is_authenticated %}
                         <div class="card-body">
@@ -52,15 +52,18 @@
             {% if user.is_authenticated %}
                 {% load static %}
                 <div class="card" style="">
+{#                TODO 프로필을 만들어야 사진이 바뀔듯.. #}
                     <img src="{% static 'images/awos.JPG' %}" class="card-img-top">
                     <div class="card-body">
-                        {% for object in object_list %}
-                            {% if forloop.first %}
-                                {% if object.author == request.user %}
-                                    <h5 class="card-title">{{ object.author }}</h5>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
+{#                        {% for object in object_list %}#}
+{#                            {% if forloop.first %}#}
+{#                                {% if object.author == request.user %}#}
+{#                                    <h5 class="card-title">{{ object.author }}</h5>#}
+{#                        TODO 글없을 때에도 username이 나오도록 하기 #}
+                                    <h5 class="card-title">{{ request.user }}</h5>
+{#                                {% endif %}#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
                         <p class="card-text">회원님의 스토리를 확인해보세요!</p>
                         <a href="{% url 'photo:mylist' %}" class="btn btn-primary">회원님의 스토리 이동</a>
                     </div>
