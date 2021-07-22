@@ -7,29 +7,27 @@
 
     </style>
 
-    {#    <div class="row">#}
-    {#        <div class="col-md-12">#}
-    {#            <div id="mdb-lightbox-ui"></div>#}
-    {#            <div class="mdb-lightbox no-margin">#}
-    {#                <div class="row">#}
     <div class="container">
         <div class="row mx-auto">
-            {% for object in object_list %}
-                {% if object.author == request.user %}
-                    {#                            <figure class="col-md-2">#}
-                    <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
-                    <div class="card text-center" style="min-width: 18rem;">
-                        {#                                <div style="width: 18rem;">#}
-                        <a href="{% url 'photo:detail' object.id %}"><p class="card-img-top my_image"><img src="{{ object.image.url }}" alt="..."></p></a>
-                        {#                                        <img src="{{ object.image.url }}" width="500" height="400" class="card-img-top"#}
-                        {#                                         alt="...">#}
-                    </div>
-                    {#                            </figure>#}
-                {% endif %}
-            {% endfor %}
+            {% if object_list %}
+                {% for object in object_list %}
+                    {% if object.author == request.user %}
+                        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
+                        <div class="card text-center" style="min-width: 18rem;">
+{#                        <a href="{{ object.id }}"><p class="card-img-top my_image">{{ object.image|safe }}</p></a>#}
+                            <a href="{% url 'photo:detail' object.id %}"><img src="{{ object.image.url }}"
+                                                                              class="card-img-top my_image"
+                                                                              alt="..."></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="row mx-auto">
+                    <p>올린 글이 없습니다.</p>
+                </div>
+            {% endif %}
             </div>
         </div>
         <div class="col"></div>
     </div>
-    {#    </div>#}
 {% endblock %}

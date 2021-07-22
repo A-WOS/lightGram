@@ -11,6 +11,14 @@
 <body>
 {% load static %}
 <style>
+
+{#    img를 올렸을 때 크기를 맞추기 위해 img 태그 재정의 #}
+    img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+    }
+
     .btn-like {
         display: inline-block;;
         width: 50px;
